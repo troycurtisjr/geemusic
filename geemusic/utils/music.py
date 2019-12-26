@@ -12,10 +12,10 @@ class GMusicWrapper(object):
     def __init__(self, username, password, logger=None):
         self._api = Mobileclient()
         self.logger = logger
-        success = self._api.login(username, password, getenv('ANDROID_ID', Mobileclient.FROM_MAC_ADDRESS))
+        success = self._api.oauth_login(getenv('ANDROID_ID', Mobileclient.FROM_MAC_ADDRESS))
 
         if not success:
-            raise Exception("Unsuccessful login. Aborting!")
+            raise Exception("Unsuccessful login. Aborting! You may need to manually run perform_oauth() once.")
 
         try:
             assert literal_eval(getenv("DEBUG_FORCE_LIBRARY", "False"))
