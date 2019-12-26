@@ -264,10 +264,10 @@ def play_artist_radio(artist_name):
     # Get a streaming URL for the top song
     stream_url = api.get_stream_url(first_song_id)
 
-    if "albumArtRef" in album:
-        thumbnail = api.get_thumbnail(album['albumArtRef'])
-    else:
-        thumbnail = None
+#    if "albumArtRef" in album:
+#        thumbnail = api.get_thumbnail(album['albumArtRef'])
+#    else:
+    thumbnail = None
     speech_text = render_template("play_artist_radio_text",
                                   artist=artist['name'])
     return audio(speech_text).play(stream_url) \
